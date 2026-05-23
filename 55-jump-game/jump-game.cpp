@@ -8,8 +8,8 @@ public:
             maxFreq=max(maxFreq,i+nums[i]);
         }
 
-        if(maxFreq>=n-1)return true;
-        return false;
+        // if(maxFreq>=n-1)return true;
+        return true;
         
     }
 };
