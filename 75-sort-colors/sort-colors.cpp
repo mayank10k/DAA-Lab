@@ -1,23 +1,20 @@
 class Solution {
 public:
     void sortColors(vector<int>& nums) {
-        unordered_map<int,int>m;
-        for(int i:nums){
-            m[i]++;
+       int n=nums.size();
+       int low=0,mid=0,high=n-1;
+
+       while(mid<=high){
+        if(nums[mid]==0){
+            swap(nums[mid],nums[low]);
+            mid++;
+            low++;
+        }else if(nums[mid]==1){
+            mid++;
+        }else{
+            swap(nums[mid],nums[high]);
+            high--;
         }
-        int i=0;
-        while(m[0]){
-            nums[i++]=0;
-            m[0]--;
-        }
-        while(m[1]){
-            nums[i++]=1;
-            m[1]--;
-        }
-        while(m[2]){
-            nums[i++]=2;
-            m[2]--;
-        }
-        
+       }
     }
 };
