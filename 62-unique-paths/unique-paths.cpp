@@ -9,8 +9,10 @@ public:
         return dp[i][j]=up+left;
     }
     int uniquePaths(int m, int n) {
+
         vector<vector<int>>dp(m,vector<int>(n,-1));
-        return helper(m-1,n-1,dp);  
-        // return dp[m-1][n-1];
+        dp[0][0]=1;
+        helper(m-1,n-1,dp);  
+        return dp[m-1][n-1];
     }
 };
