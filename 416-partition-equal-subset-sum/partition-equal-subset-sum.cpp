@@ -1,25 +1,33 @@
 class Solution {
 public:
-    bool helper(vector<int>& nums,int target,int idx,vector<vector<int>>&dp){
-        if(target==0)return true;
-        if(idx==0)return (nums[0]==target);
-        if(dp[idx][target]!=-1)return dp[idx][target];
-        
-        bool notTake=helper(nums,target,idx-1,dp);
-        bool take=false;
-        if(target>=nums[idx]){
-            take=helper(nums,target-nums[idx],idx-1,dp);
-        }
-        return dp[idx][target]=take | notTake;
-    }
+    //tabulation
 
     bool canPartition(vector<int>& nums) {
         int sum=accumulate(nums.begin(),nums.end(),0);
-        if(sum%2!=0)return false;
-        int target=sum/2;
         int n=nums.size();
-        vector<vector<int>>dp(n,vector<int>(target+1,-1));
-        return helper(nums,target,n-1,dp);
+        if(sum%2!=0 || n==1)return false;
+        int target=sum/2;
+        vector<vector<int>>dp(n,vector<int>(target+1,0));
+        
+        // if(target==0)return true;
+        for(int i=0;i<n;i++){
+            dp[i][0]=true;
+        }
+        // if(idx==0)return (nums[0]==target);
+        if (nums[0] <= target)dp[0][nums[0]] = true;
+
+        for(int i=1;i<n;i++){
+            for(int j=1;j<=target;j++){
+                bool notTake=dp[i-1][j];
+                bool take=false;
+                if(nums[i]<=j){
+                    take=dp[i-1][j-nums[i]];
+                }
+                dp[i][j]=take|notTake;
+            }
+        }
+
+        return dp[n-1][target];
         
     }
 };
