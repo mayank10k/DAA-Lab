@@ -1,6 +1,6 @@
 class Solution {
 public:
-
+    //tabulation
     int maxProfit(vector<int>& prices, int fee) {
         int n=prices.size();
         vector<vector<int>>dp(n+1,vector<int>(2,-1));
