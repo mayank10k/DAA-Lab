@@ -1,5 +1,6 @@
 class Solution {
 public:
+    //usign binary search
     int lengthOfLIS(vector<int>& nums) {
         vector<int>v;
         v.push_back(nums[0]);
