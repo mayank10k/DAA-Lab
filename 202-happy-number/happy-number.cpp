@@ -1,7 +1,6 @@
 class Solution {
 public:
     bool isHappy(int n) {
-        // string s=to_string(n);
         bool flag=true;
         set<int>s;
         while(flag){
