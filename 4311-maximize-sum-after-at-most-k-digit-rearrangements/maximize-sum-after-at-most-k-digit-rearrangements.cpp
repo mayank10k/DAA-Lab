@@ -36,9 +36,8 @@ public:
             }else{
                 sum+=it.second;
             }
-            cout<<sum<<endl;
+            
         }
-        cout<<sum;
 
         return sum;
 
