@@ -10,28 +10,12 @@
  * };
  */
 class Solution {
+    unordered_set<int>s;
 public:
-    void inorder(TreeNode* node,vector<int>&nums){
-        if(node==nullptr)return ;
-        inorder(node->left,nums);
-        nums.push_back(node->val);
-        inorder(node->right,nums);
-    }
-
     bool findTarget(TreeNode* root, int k) {
-        vector<int>nums;
-        inorder(root,nums);
-
-        int i=0,j=nums.size()-1;
-        while(i<j){
-            if(nums[i]+nums[j]>k){
-                j--;
-            }else if(nums[i]+nums[j]<k){
-                i++;
-            }else{
-                return true;
-            }
-        }
-        return false;
+        if(!root)return false;
+        if(s.count(k-root->val))return true;
+        s.insert(root->val);
+        return findTarget(root->left,k) || findTarget(root->right,k);
     }
 };
