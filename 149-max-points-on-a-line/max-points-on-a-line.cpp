@@ -15,7 +15,7 @@ public:
                 int y2=points[j][1];
 
                 double m=double(y2-y1)/double(x2-x1);
-                if(y2-y1<0 && x2-x1==0)mp[abs(m)]++;    
+                if(y2-y1<0 && x2-x1==0)mp[abs(m)]++;     // to combine -inf with +inf (cause they will lie on a same line)
                 else mp[m]++;
 
                 for(auto it:mp){
