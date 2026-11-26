@@ -4,15 +4,9 @@ public:
         bool flag=true;
         int d=10;
         while(n>=d){
-            if(flag){
-                n-=d;
-                d--;
-                flag=false;
-            }else{
-                n-=d;
-                d--;
-                flag=true;
-            }
+            n-=d;
+            d--;
+            flag=!flag;
         }
         return !flag;
         
